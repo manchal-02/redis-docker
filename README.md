@@ -11,6 +11,6 @@ After cloning the repository, navigate to the redis-docker directory using the t
 ```
 docker-compose up --build
 ```
-The docker-compose up --build command will create and run three separate containers for Redis, Python app, and the frontend. The Python app will be accessible at http://localhost:8000, and the frontend will be accessible at http://localhost.
+The `docker-compose up --build` command will create and run three separate containers for Redis, Python app, and the frontend. The Python app will be accessible at `http://localhost:8000`, and the frontend will be accessible at `http://localhost:80`
 
 Feel free to interact with the application and test its functionalities.
