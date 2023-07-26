@@ -1,0 +1,28 @@
+version: '3'
+services:
+  python_app:
+    build:
+      context: .
+    ports:
+      - "8000:8000"
+    depends_on:
+      - redis
+    networks:
+      - my_network
+
+  redis:
+    image: redis:alpine
+    networks:
+      - my_network
+
+  frontend:
+    build:
+      context: ./templates/frontend  # Correct path to the frontend Dockerfile
+    ports:
+      - "80:80"
+    networks:
+      - my_network
+
+networks:
+  my_network:
+

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Redis Test</title>
+</head>
+<body>
+    <h1>Redis Test</h1>
+    <p>Current Count: <span id="count"></span></p>
+    <button id="incrBtn">Increase</button>
+    <button id="decrBtn">Decrease</button>
+    <script>
+    const countElem = document.getElementById("count");
+    const incrBtn = document.getElementById("incrBtn");
+    const decrBtn = document.getElementById("decrBtn");
+
+    function updateCount() {
+        fetch("/get") // Send request to the relative path /get on the same domain
+        .then(response => response.json())
+        .then(data => {
+            countElem.innerText = data.count;
+        });
+    }
+
+    function increaseCount() {
+        fetch("/incr", {method: 'POST'}) // Send POST request to /incr on the same domain
+        .then(() => updateCount());
+    }
+
+    function decreaseCount() {
+        fetch("/decr", {method: 'POST'}) // Send POST request to /decr on the same domain
+        .then(() => updateCount());
+    }
+
+    updateCount();
+
+    incrBtn.addEventListener("click", increaseCount);
+    decrBtn.addEventListener("click", decreaseCount);
+    </script>
+</body>
+</html>
+
